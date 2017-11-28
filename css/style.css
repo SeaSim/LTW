@@ -1,0 +1,43 @@
+.top {
+  background-color: black;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-top: 70px solid orange;
+}
+
+.top-content {
+  margin-top: -50px;
+  color: white;
+}
+
+.vetro {
+  margin-left: 70px;
+  margin-right: 70px;
+  background-color: black;
+  text-align: center;
+}
+
+.game {
+  margin: 10px;
+  border-radius: 20px;
+  background-color: #ccc;
+  height: 400px;
+  width: 95%;
+}
+
+.bottom {
+  background-color: black;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-bottom: 140px solid orange;
+}
+
+.tasto {
+  position: fixed;
+  bottom: 100px;
+  z-index: 1000;
+  height: 40px;
+  width: 40px;
+  background-color: red;
+  border-radius: 20px;
+}
