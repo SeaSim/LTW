@@ -1,36 +1,69 @@
 <html>
   <head>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
   </head>
-  <body style="background-color: black;">
+  <body>
     <div class="container-fluid">
-      <div class="row" style="height: 74px;">
-        <div class="col-md" style="padding: 0;">
-          <div class="top">
-            <div class="top-content">
+      <div class="row top">
+        <div class="col-md-12">
+          <div class="logo">
+            ARCADE GAMES
+          </div>
+        </div>
+      </div>
+      <div class="row mid">
+        <div class="col-md-2 col-left">
+          <div class="top-left-game" id="top-left-game">
 
+          </div>
+          <div class="bottom-left-game" id="bottom-left-game">
+
+          </div>
+        </div>
+        <div class="col-md-8 col-center">
+          <div class="content">
+            <!-- <canvas id="game" class="game" width="640" height="480"> </canvas>
+            <canvas id="preview" width=100 height=120></canvas> -->
+            <canvas id="game" width=640 height=480></canvas>
+            <canvas id="preview" width=100 height=120 style="display: none;"></canvas>
+            <div id="status" style="display: none;">
+              dude...
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-right">
+          <div class="leaderboard">
+            <div class="lb-title">
+              LeaderBoard
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md" style="padding: 0;">
-          <div class="vetro">
-            <canvas class="game" id="game">
-            </canvas>
-          </div>
+      <div class="row bottom">
+        <!--
+        <div class="col-md-12">
+          <a id="button"></a>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md" style="padding: 0;">
-          <div class="bottom">
-          </div>
-        </div>
+      -->
       </div>
     </div>
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/game.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/tetris.js"></script>
+    <script src="js/snake.js"></script>
+
+    <script>
+      $('#top-left-game').click(function(){
+        resetSnake();
+        new_game();
+      });
+
+      $('#bottom-left-game').click(function(){
+        resetTetris();
+        startSnake();
+      });
+    </script>
+
   </body>
 </html>

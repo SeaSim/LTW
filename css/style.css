@@ -1,43 +1,149 @@
+@font-face {
+    font-family: 'mexcellent3d';
+    src: url('../font/pacman.ttf');
+}
+
+body {
+  margin: 0;
+}
+
 .top {
+  height: 20vh;
   background-color: black;
-  border-left: 70px solid transparent;
-  border-right: 70px solid transparent;
-  border-top: 70px solid orange;
 }
 
-.top-content {
-  margin-top: -50px;
-  color: white;
+.mid {
+  height: 60vh;
 }
 
-.vetro {
-  margin-left: 70px;
-  margin-right: 70px;
+.col-left {
   background-color: black;
+}
+
+.col-center {
+  background-color: black;
+}
+
+.col-right {
+  background-color: black;
+}
+
+.bottom {
+  height: 20vh;
+  background-color: black;
+}
+
+.top-left-game {
+  width: 80%;
+  height: 100px;
+  /*background-color: white;*/
+  background-image: url("../img/tetris.jpeg");
+  background-size: cover;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50%;
+}
+
+.bottom-left-game {
+  width: 80%;
+  height: 100px;
+  /*background-color: white;*/
+  background-image: url("../img/snake.png");
+  background-size: cover;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30%;
+}
+
+.leaderboard {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lb-title {
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  background-color: #ccc;
+  border-radius: 15px 15px 0px 0px;
+  font-family: 'mexcellent3d';
+}
+
+.content {
+  border-radius: 15px;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  color: #fff;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fdff00, 0 0 30px #fdff00, 0 0 40px #fdff00, 0 0 50px #fdff00, 0 0 75px #fdff00;
+	letter-spacing: 5px;
+	font-family: 'mexcellent3d';
+  font-size: 80px;
   text-align: center;
 }
 
 .game {
-  margin: 10px;
-  border-radius: 20px;
-  background-color: #ccc;
-  height: 400px;
-  width: 95%;
+  width: 100%;
+  height: 500px;
 }
 
-.bottom {
-  background-color: black;
-  border-left: 70px solid transparent;
-  border-right: 70px solid transparent;
-  border-bottom: 140px solid orange;
+a#button {
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  font: 2.5em/1em Arial, sans-serif;
+  color: #ffe5e5;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  background: #f00;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: inset 0 -5px 20px rgba(0,0,0,0.5), inset 0 15px 20px rgba(255,255,255,0.5), 0 5px 10px rgba(0,0,0,0.75), 0 10px 10px rgba(0,0,0,0.5);
+  box-shadow: inset 0 -5px 20px rgba(0,0,0,0.5), inset 0 15px 20px rgba(255,255,255,0.5), 0 5px 10px rgba(0,0,0,0.75), 0 10px 10px rgba(0,0,0,0.5);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 78px 9px 0 0;
+  cursor: pointer;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+a#button:before {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  z-index: -5;
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #f00;
+  top: -20px;
+  left: -20px;
+  -webkit-box-shadow: inset 0 7px 15px rgba(255,255,255,0.5), inset 0 -7px 15px rgba(0,0,0,0.5);
+  box-shadow: inset 0 7px 15px rgba(255,255,255,0.5), inset 0 -7px 15px rgba(0,0,0,0.5);
 }
 
-.tasto {
-  position: fixed;
-  bottom: 100px;
-  z-index: 1000;
-  height: 40px;
-  width: 40px;
-  background-color: red;
-  border-radius: 20px;
+a#button:active {
+  -webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  color: #ffeded;
 }
