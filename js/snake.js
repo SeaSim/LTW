@@ -38,9 +38,9 @@ game = {
 
   drawScore: function() {
     context.fillStyle = '#999';
-    context.font = (canvas.height) + 'px Impact, sans-serif';
+    context.font = (50) + 'px Impact, sans-serif';
     context.textAlign = 'center';
-    context.fillText(game.score, canvas.width/2, canvas.height  * .9);
+    context.fillText(game.score, canvas.width * 0.9, canvas.height * 0.1);
   },
 
   drawMessage: function() {

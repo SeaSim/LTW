@@ -1,149 +1,120 @@
 @font-face {
-    font-family: 'mexcellent3d';
-    src: url('../font/pacman.ttf');
+    font-family: 'tr2n';
+    src: url('../fonts/Tr2n.ttf');
 }
 
 body {
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
   margin: 0;
+  padding: 0;
 }
 
-.top {
-  height: 20vh;
-  background-color: black;
-}
-
-.mid {
-  height: 60vh;
-}
-
-.col-left {
-  background-color: black;
-}
-
-.col-center {
-  background-color: black;
-}
-
-.col-right {
-  background-color: black;
-}
-
-.bottom {
-  height: 20vh;
-  background-color: black;
-}
-
-.top-left-game {
-  width: 80%;
-  height: 100px;
-  /*background-color: white;*/
-  background-image: url("../img/tetris.jpeg");
-  background-size: cover;
-  border-radius: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50%;
-}
-
-.bottom-left-game {
-  width: 80%;
-  height: 100px;
-  /*background-color: white;*/
-  background-image: url("../img/snake.png");
-  background-size: cover;
-  border-radius: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30%;
-}
-
-.leaderboard {
+.body-opacity {
   width: 100%;
   height: 100%;
-  background-color: white;
-  border-radius: 15px;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: black;
+  opacity: 0.5;
+  position: fixed;
 }
 
-.lb-title {
-  font-size: 16px;
-  color: black;
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.top-bar {
+  background-image: url('../images/wood.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 15%;
+  -webkit-clip-path: polygon(5% 0%, 10% 100%, 90% 100%, 95% 0%);
+  clip-path: polygon(8% 0%, 10% 100%, 90% 100%, 92% 0%);
+  box-shadow: inset 0px -20px 40px rgba(0,0,0,0.6);
+}
+
+.game-box {
+  background-color: black;
+  width: 100%;
+  height: 60%;
+  -webkit-clip-path: polygon(10% 0%, 10% 100%, 90% 100%, 90% 0%);
+  clip-path: polygon(10% 0%, 10% 100%, 90% 100%, 90% 0%);
   text-align: center;
-  background-color: #ccc;
-  border-radius: 15px 15px 0px 0px;
-  font-family: 'mexcellent3d';
+  box-shadow: inset 20px 10px 100px rgba(255,255,255,0.5);
 }
 
-.content {
-  border-radius: 15px;
-  background-color: white;
-  height: 100%;
+.command-bar {
+  background-image: url('../images/wood.jpg');
+  background-size: cover;
   width: 100%;
+  height: 20%;
+  -webkit-clip-path: polygon(10% 0%, 5% 100%, 95% 100%, 90% 0%);
+  clip-path: polygon(10% 0%, 5% 100%, 95% 100%, 90% 0%);
+  box-shadow: inset 0px 20px 30px rgba(0,0,0,0.5);
+}
+
+.bottom-bar {
+  background-image: url('../images/wood.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 5%;
+  -webkit-clip-path: polygon(5% 0%, 5% 100%, 95% 100%, 95% 0%);
+  clip-path: polygon(5% 0%, 5% 100%, 95% 100%, 95% 0%);
+  box-shadow: inset 0px -25px 30px rgba(0,0,0,0.7);
 }
 
 .logo {
-  color: #fff;
-	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fdff00, 0 0 30px #fdff00, 0 0 40px #fdff00, 0 0 50px #fdff00, 0 0 75px #fdff00;
-	letter-spacing: 5px;
-	font-family: 'mexcellent3d';
-  font-size: 80px;
+  font-family: "tr2n";
+  color: #000;
+  font-size: 90px;
   text-align: center;
+  -webkit-transition: text-shadow 0.2s linear;
+  -moz-transition: text-shadow 0.2s linear;
+  -ms-transition: text-shadow 0.2s linear;
+  -o-transition: text-shadow 0.2s linear;
+  transition: text-shadow 0.2s linear;
 }
 
-.game {
-  width: 100%;
-  height: 500px;
+.shadow {
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fdff00, 0 0 30px #fdff00, 0 0 40px #fdff00, 0 0 50px #fdff00, 0 0 75px #fdff00;
 }
 
-a#button {
-  position: absolute;
+.game1-button {
   display: inline-block;
-  text-align: center;
-  font: 2.5em/1em Arial, sans-serif;
-  color: #ffe5e5;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-  background: #f00;
-  width: 100px;
+  width: 20%;
   height: 100px;
-  top: 50%;
-  left: 50%;
-  margin: -50px 0 0 -50px;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-box-shadow: inset 0 -5px 20px rgba(0,0,0,0.5), inset 0 15px 20px rgba(255,255,255,0.5), 0 5px 10px rgba(0,0,0,0.75), 0 10px 10px rgba(0,0,0,0.5);
-  box-shadow: inset 0 -5px 20px rgba(0,0,0,0.5), inset 0 15px 20px rgba(255,255,255,0.5), 0 5px 10px rgba(0,0,0,0.75), 0 10px 10px rgba(0,0,0,0.5);
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 78px 9px 0 0;
-  cursor: pointer;
-  -webkit-transition: all 0.1s ease;
-  -moz-transition: all 0.1s ease;
-  -o-transition: all 0.1s ease;
-  -ms-transition: all 0.1s ease;
-  transition: all 0.1s ease;
-}
-a#button:before {
-  content: " ";
-  display: inline-block;
-  position: absolute;
-  z-index: -5;
-  width: 120px;
-  height: 120px;
-  top: 50%;
-  left: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  background: #f00;
-  top: -20px;
-  left: -20px;
-  -webkit-box-shadow: inset 0 7px 15px rgba(255,255,255,0.5), inset 0 -7px 15px rgba(0,0,0,0.5);
-  box-shadow: inset 0 7px 15px rgba(255,255,255,0.5), inset 0 -7px 15px rgba(0,0,0,0.5);
+  background-image: url('../images/snake-btn.png');
+  background-size: 50%;
+  border-bottom: 8px solid black;
+  -webkit-clip-path: polygon(59% 20%, 43% 100%, 91% 100%, 100% 20%);
+  clip-path: polygon(59% 20%, 43% 100%, 91% 100%, 100% 20%);
 }
 
-a#button:active {
-  -webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-  color: #ffeded;
+.game1-button:hover {
+  border-bottom: 0;
+  cursor: pointer;
+}
+
+.game2-button {
+  display: inline-block;
+  width: 20%;
+  height: 100px;
+  background-image: url('../images/tetris-btn.jpg');
+  background-size: 65%;
+  border-bottom: 8px solid black;
+  -webkit-clip-path: polygon(15% 20%, 8% 100%, 56% 100%, 60% 20%);
+  clip-path: polygon(15% 20%, 8% 100%, 56% 100%, 60% 20%);
+}
+
+.game2-button:hover {
+  border-bottom: 0;
+  cursor: pointer;
+}
+
+.game-canvas {
+  display: inline-block;
+  background-color: white;
+  width: 50%;
+  height: 80%;
+  margin-top: 3%;
 }
