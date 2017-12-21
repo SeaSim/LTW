@@ -17,10 +17,12 @@
         <canvas id="snake" class="game-canvas invisible" width="640" height="480"></canvas>
       </div>
       <div class="command-bar">
-        <div class="game1-button">
+        <div class="coin">
 
         </div>
-
+        <div class="createdby">
+          <i>&nbsp;&nbsp;&nbsp;Created by Francesco, Ludovico e Simone</i>
+        </div>
         <div class="button-left">
           <&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
@@ -43,11 +45,23 @@
     </div>
 
     <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/snake.js">
-
+    <script src="js/sweetalert2.js"></script>
+    <script src="js/snake.js"></script>
     <script>
-      $(".game1-button").click(function() {
-        $("#tetris").addClass("invisible");
+      $(document).ready(function () {
+        swal({
+          title: 'Inserisci il tuo nome',
+          input: 'text',
+          showCancelButton: false,
+          confirmButtonText: 'Gioca',
+          allowOutsideClick: false
+        }).then((result) => {
+            localStorage.player = result.value;
+        })
+      });
+    </script>
+    <script>
+      $(".coin").click(function() {
         $("#snake").removeClass("invisible");
         startSnake();
       });

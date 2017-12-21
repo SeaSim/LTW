@@ -23,15 +23,17 @@ gioco = {
     if (typeof(Storage) !== "undefined") {
       if(localStorage.bestscore){
         if(gioco.punteggio > localStorage.bestscore){
+          localStorage.bestplayer = localStorage.player;
           localStorage.bestscore = gioco.punteggio;
         }
       } else {
+        localStorage.bestplayer = localStorage.player;
         localStorage.bestscore = gioco.punteggio;
       }
     }
-    document.getElementById("status").innerHTML = 'Miglior punteggio: ' + localStorage.bestscore;
+    document.getElementById("status").innerHTML = 'Miglior punteggio: ' + localStorage.bestscore + ', di ' + localStorage.bestplayer;
     gioco.over = true;
-    gioco.messaggio = 'Premi spacebar per iniziare ';
+    gioco.messaggio = 'Premi SPAZIO per iniziare ';
   },
 
   creaBox: function(x, y, size, colore) {
