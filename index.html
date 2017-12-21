@@ -15,15 +15,12 @@
 
         </div>
         <canvas id="snake" class="game-canvas invisible" width="640" height="480"></canvas>
-        <canvas id="tetris" class="game-canvas invisible" width="600" height="400"></canvas>
       </div>
       <div class="command-bar">
         <div class="game1-button">
 
         </div>
-        <div class="game2-button">
 
-        </div>
         <div class="button-left">
           <&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
@@ -46,20 +43,13 @@
     </div>
 
     <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/snake.js"></script>
-    <script src="js/tetris.js"></script>
+    <script src="js/snake.js">
+
     <script>
       $(".game1-button").click(function() {
         $("#tetris").addClass("invisible");
         $("#snake").removeClass("invisible");
         startSnake();
-        resetTetris();
-      });
-      $(".game2-button").click(function() {
-        $("#snake").addClass("invisible");
-        $("#tetris").removeClass("invisible");
-        resetSnake();
-        new_game();
       });
     </script>
     <script>
