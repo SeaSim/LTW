@@ -1,3 +1,5 @@
+var canvas = document.getElementById("tetris");
+var context = canvas.getContext("2d");
 document.onkeyup=key;
 
 var colors = ["rgb(13, 13, 13)",   "rgb(200, 13, 13)",
@@ -125,8 +127,8 @@ function piece(){
 }
 
 function view(size){
-  this.canvas = document.getElementById("game");
-  this.ctx = this.canvas.getContext("2d");
+  this.canvas = canvas;
+  this.ctx = context;
   this.ctx.strokeStyle = colors[0];
   this.xsize=board.x*size;
   this.ysize=board.y*size;
@@ -161,8 +163,8 @@ function view(size){
   }
 }
 
-function preview(size){
-  this.canvas = document.getElementById("preview");
+/*function preview(size){
+  this.canvas = document.getElementById("pippo");
   this.ctx = this.canvas.getContext("2d");
   this.ctx.strokeStyle = colors[0];
 
@@ -175,7 +177,7 @@ function preview(size){
       this.ctx.strokeRect(size+d[i][0]*size, size+d[i][1]*size, size, size);
     }
   }
-}
+}*/
 
 function status(){
   this.lines=0;
@@ -205,13 +207,13 @@ function key(e){
       current.move(0, 1);
     else if(key=="75")
       current.move(0, -1);
-    else if(key=="72")
+    else if(key=="37")
       current.move(-1, 0);
-    else if(key=="76")
+    else if(key=="39")
       current.move(1, 0);
-    else if(key=="65")
+    else if(key=="38")
       current.rotate(1);
-    else if(key=="70")
+    else if(key=="40")
       current.rotate(-1);
     else if(key=="32")
       current.drop();
@@ -228,7 +230,7 @@ function step(){
       return;
     current = next;
     next = new piece();
-    preview.update();
+    //preview.update();
     status.update();
   } else
     current.y += 1;
@@ -236,19 +238,20 @@ function step(){
 }
 
 function new_game(){
-  board   = new board(30,20);
+  board   = new board(20,20);
   next    = new piece();
   current = new piece();
   view    = new view(20);
-  preview = new preview(20);
+  //preview = new preview(20);
   status  = new status();
 
   status.update();
-  preview.update();
+  //preview.update();
   view.update();
   //go!
   run=setInterval(step, levels[0]);
 }
+
 function resetTetris(){
-    this.canvas.getContext("2d").clearRect(0, 0, this.canvas.width, this.canvas.height);
+    context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 }

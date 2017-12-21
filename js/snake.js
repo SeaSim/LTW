@@ -1,32 +1,41 @@
-var canvas = document.getElementById("game");
+var canvas = document.getElementById("snake");
 var context = canvas.getContext("2d");
+var gioco, snake, cibo;
 
-game = {
+gioco = {
 
-  score: 0,
+  punteggio: 0,
   fps: 8,
   over: false,
-  message: null,
-  resetted: true,
+  messaggio: null,
+  resettato: true,
 
   start: function() {
-    game.over = false;
-    game.message = null;
-    game.score = 0;
-    game.fps = 8;
+    gioco.over = false;
+    gioco.messaggio = null;
+    gioco.punteggio = 0;
+    gioco.fps = 8;
     snake.init();
-    food.set();
+    cibo.set();
   },
 
   stop: function() {
-    game.over = true;
-    game.message = 'GAME OVER - PRESS SPACEBAR';
-    console.log("canvas width: " + canvas.width + "; canvas height: " + canvas.height);
-
+    if (typeof(Storage) !== "undefined") {
+      if(localStorage.bestscore){
+        if(gioco.punteggio > localStorage.bestscore){
+          localStorage.bestscore = gioco.punteggio;
+        }
+      } else {
+        localStorage.bestscore = gioco.punteggio;
+      }
+    }
+    document.getElementById("status").innerHTML = 'Miglior punteggio: ' + localStorage.bestscore;
+    gioco.over = true;
+    gioco.messaggio = 'Premi spacebar per iniziare ';
   },
 
-  drawBox: function(x, y, size, color) {
-    context.fillStyle = color;
+  creaBox: function(x, y, size, colore) {
+    context.fillStyle = colore;
     context.beginPath();
     context.moveTo(x - (size / 2), y - (size / 2));
     context.lineTo(x + (size / 2), y - (size / 2));
@@ -36,21 +45,21 @@ game = {
     context.fill();
   },
 
-  drawScore: function() {
+  creaPunteggio: function() {
     context.fillStyle = '#999';
     context.font = (50) + 'px Impact, sans-serif';
     context.textAlign = 'center';
-    context.fillText(game.score, canvas.width * 0.9, canvas.height * 0.1);
+    context.fillText(gioco.punteggio, canvas.width * 0.9, canvas.height * 0.1);
   },
 
-  drawMessage: function() {
-    if (game.message !== null) {
+  creaMessaggio: function() {
+    if (gioco.messaggio !== null) {
       context.fillStyle = '#00F';
       context.strokeStyle = '#FFF';
-      context.font = (canvas.height / 10) + 'px Impact';
+      context.font = (30) + 'px Impact';
       context.textAlign = 'center';
-      context.fillText(game.message, canvas.width/2, canvas.height/2);
-      context.strokeText(game.message, canvas.width/2, canvas.height/2);
+      context.fillText(gioco.messaggio, canvas.width/2, canvas.height/2);
+      context.strokeText(gioco.messaggio, canvas.width/2, canvas.height/2);
     }
   },
 
@@ -65,53 +74,53 @@ snake = {
   size: canvas.width /40,
   x: null,
   y: null,
-  color: '#0F0',
-  direction: 'left',
-  sections: [],
+  colore: '#0F0',
+  direzione: 'sinistra',
+  sezioni: [],
 
   init: function() {
-    snake.sections = [];
-    snake.direction = 'left';
+    snake.sezioni = [];
+    snake.direzione = 'sinistra';
     snake.x = canvas.width / 2 + snake.size / 2;
     snake.y = canvas.height /2 + snake.size / 2;
     for (i = snake.x + (5 * snake.size); i >= snake.x; i-=snake.size) {
-      snake.sections.push(i + ',' + snake.y);
+      snake.sezioni.push(i + ',' + snake.y);
     }
   },
 
-  move: function() {
-    switch(snake.direction) {
-      case 'up':
+  muovi: function() {
+    switch(snake.direzione) {
+      case 'su':
         snake.y-=snake.size;
         break;
-      case 'down':
+      case 'giu':
         snake.y+=snake.size;
         break;
-      case 'left':
+      case 'sinistra':
         snake.x-=snake.size;
         break;
-      case 'right':
+      case 'destra':
         snake.x+=snake.size;
         break;
     }
-    snake.checkCollision();
-    snake.checkGrowth();
-    snake.sections.push(snake.x + ',' + snake.y);
+    snake.checkCollisione();
+    snake.checkCrescita();
+    snake.sezioni.push(snake.x + ',' + snake.y);
   },
 
-  draw: function() {
-    for (i = 0; i < snake.sections.length; i++) {
-      snake.drawSection(snake.sections[i].split(','));
+  crea: function() {
+    for (i = 0; i < snake.sezioni.length; i++) {
+      snake.creaSezione(snake.sezioni[i].split(','));
     }
   },
 
-  drawSection: function(section) {
-    game.drawBox(parseInt(section[0]), parseInt(section[1]), snake.size, snake.color);
+  creaSezione: function(section) {
+    gioco.creaBox(parseInt(section[0]), parseInt(section[1]), snake.size, snake.colore);
   },
 
-  checkCollision: function() {
+  checkCollisione: function() {
     if (snake.isCollision(snake.x, snake.y) === true) {
-      game.stop();
+      gioco.stop();
     }
   },
 
@@ -120,56 +129,56 @@ snake = {
         x > canvas.width ||
         y < snake.size/2 ||
         y > canvas.height ||
-        snake.sections.indexOf(x+','+y) >= 0) {
+        snake.sezioni.indexOf(x+','+y) >= 0) {
       return true;
     }
   },
 
-  checkGrowth: function() {
-    if (snake.x == food.x && snake.y == food.y) {
-      game.score++;
-      if (game.score % 5 == 0 && game.fps < 60) {
-        game.fps++;
+  checkCrescita: function() {
+    if (snake.x == cibo.x && snake.y == cibo.y) {
+      gioco.punteggio++;
+      if (gioco.punteggio % 5 == 0 && gioco.fps < 60) {
+        gioco.fps++;
       }
-      food.set();
+      cibo.set();
     } else {
-      snake.sections.shift();
+      snake.sezioni.shift();
     }
   }
 
 };
 
-food = {
+cibo = {
 
   size: null,
   x: null,
   y: null,
-  color: '#0FF',
+  colore: '#0FF',
 
   set: function() {
-    food.size = snake.size;
-    food.x = (Math.ceil(Math.random() * 10) * snake.size * 4) - snake.size / 2;
-    food.y = (Math.ceil(Math.random() * 10) * snake.size * 3) - snake.size / 2;
+    cibo.size = snake.size;
+    cibo.x = (Math.ceil(Math.random() * 10) * snake.size * 4) - snake.size / 2;
+    cibo.y = (Math.ceil(Math.random() * 10) * snake.size * 3) - snake.size / 2;
   },
 
-  draw: function() {
-    game.drawBox(food.x, food.y, food.size, food.color);
+  crea: function() {
+    gioco.creaBox(cibo.x, cibo.y, cibo.size, cibo.colore);
   }
 
 };
 
-inverseDirection = {
-  'up':'down',
-  'left':'right',
-  'right':'left',
-  'down':'up'
+direzioniInverse = {
+  'su':'giu',
+  'sinistra':'destra',
+  'destra':'sinistra',
+  'giu':'su'
 };
 
 keys = {
-  up: [38, 75, 87],
-  down: [40, 74, 83],
-  left: [37, 65, 72],
-  right: [39, 68, 76],
+  su: [38, 75, 87],
+  giu: [40, 74, 83],
+  sinistra: [37, 65, 72],
+  destra: [39, 68, 76],
   start_game: [13, 32]
 };
 
@@ -183,13 +192,13 @@ Object.prototype.getKey = function(value){
 };
 
 addEventListener("keydown", function (e) {
-  if(game.resetted == false){
-    lastKey = keys.getKey(e.keyCode);
-    if (['up', 'down', 'left', 'right'].indexOf(lastKey) >= 0
-        && lastKey != inverseDirection[snake.direction]) {
-      snake.direction = lastKey;
-    } else if (['start_game'].indexOf(lastKey) >= 0 && game.over) {
-      game.start();
+  if(gioco.resettato == false){
+    ultimaKey = keys.getKey(e.keyCode);
+    if (['su', 'giu', 'sinistra', 'destra'].indexOf(ultimaKey) >= 0
+        && ultimaKey != direzioniInverse[snake.direzione]) {
+      snake.direzione = ultimaKey;
+    } else if (['start_game'].indexOf(ultimaKey) >= 0 && gioco.over) {
+      gioco.start();
     }
   }
 }, false);
@@ -199,26 +208,26 @@ var requestAnimationFrame =  window.requestAnimationFrame ||
       window.mozRequestAnimationFrame;
 
 function loop() {
-  if (game.over == false) {
-    game.resetCanvas();
-    game.drawScore();
-    snake.move();
-    food.draw();
-    snake.draw();
-    game.drawMessage();
+  if (gioco.over == false) {
+    gioco.resetCanvas();
+    gioco.creaPunteggio();
+    snake.muovi();
+    cibo.crea();
+    snake.crea();
+    gioco.creaMessaggio();
   }
   setTimeout(function() {
     requestAnimationFrame(loop);
-  }, 1000 / game.fps);
+  }, 1000 / gioco.fps);
 };
 
 function resetSnake() {
-  game.over = true;
-  game.resetted = true;
-  game.resetCanvas();
+  gioco.over = true;
+  gioco.resettato = true;
+  gioco.resetCanvas();
 };
 
 function startSnake() {
-  game.resetted = false;
+  gioco.resettato = false;
   requestAnimationFrame(loop);
 }

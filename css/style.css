@@ -111,10 +111,102 @@ body {
   cursor: pointer;
 }
 
+.button-left {
+  position: fixed;
+  width: 150px;
+  height: 75px;
+  bottom: 60px;
+  right: 500px;
+  background-color: red;
+  z-index: 9000;
+  font-size: 30px;
+  text-align: center;
+  line-height: 3;
+  border-bottom: 8px solid black;
+  -webkit-clip-path: polygon(15% 20%, 8% 100%, 56% 100%, 60% 20%);
+  clip-path: polygon(10% 20%, 10% 100%, 62% 100%, 60% 20%);
+}
+
+.button-right {
+  position: fixed;
+  width: 150px;
+  height: 75px;
+  bottom: 60px;
+  right: 400px;
+  background-color: red;
+  z-index: 9000;
+  font-size: 30px;
+  text-align: center;
+  line-height: 3;
+  border-bottom: 8px solid black;
+  -webkit-clip-path: polygon(15% 20%, 8% 100%, 56% 100%, 60% 20%);
+  clip-path: polygon(8% 20%, 10% 100%, 64% 100%, 58% 20%);
+}
+
+.button-top {
+  position: fixed;
+  width: 150px;
+  height: 75px;
+  bottom: 60px;
+  right: 300px;
+  background-color: red;
+  z-index: 9000;
+  font-size: 35px;
+  text-align: center;
+  line-height: 3;
+  border-bottom: 8px solid black;
+  -webkit-clip-path: polygon(15% 20%, 8% 100%, 56% 100%, 60% 20%);
+  clip-path: polygon(6% 20%, 12% 100%, 66% 100%, 57% 20%);
+}
+
+.button-bottom {
+  position: fixed;
+  width: 150px;
+  height: 75px;
+  bottom: 60px;
+  right: 200px;
+  background-color: red;
+  z-index: 9000;
+  font-size: 35px;
+  text-align: center;
+  line-height: 2.5;
+  border-bottom: 8px solid black;
+  -webkit-clip-path: polygon(15% 20%, 8% 100%, 56% 100%, 60% 20%);
+  clip-path: polygon(4% 20%, 14% 100%, 68% 100%, 57% 20%);
+}
+
+.pressed {
+  border-bottom: 0;
+  cursor: pointer;
+}
+
+.pad {
+  position: fixed;
+  width: 100px;
+  height: 190px;
+  bottom: 60px;
+  right: 110px;
+  background-image: url('../img/pad.png');
+  background-size: cover;
+  z-index: 9999;
+}
+
 .game-canvas {
   display: inline-block;
   background-color: white;
   width: 50%;
   height: 80%;
   margin-top: 3%;
+}
+
+.invisible {
+  display: none;
+}
+
+.status {
+  position: absolute;
+  left: 43%;
+  top: 16%;
+  color: white;
+  font-size: 20px;
 }

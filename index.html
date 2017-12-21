@@ -11,7 +11,11 @@
         </div>
       </div>
       <div class="game-box">
-        <canvas class="game-canvas"></canvas>
+        <div id="status" class="status">
+
+        </div>
+        <canvas id="snake" class="game-canvas invisible" width="640" height="480"></canvas>
+        <canvas id="tetris" class="game-canvas invisible" width="600" height="400"></canvas>
       </div>
       <div class="command-bar">
         <div class="game1-button">
@@ -20,13 +24,44 @@
         <div class="game2-button">
 
         </div>
+        <div class="button-left">
+          <&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="button-right">
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="button-top">
+          ^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="button-bottom">
+          v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
       </div>
       <div class="bottom-bar">
+
+      </div>
+      <div class="pad">
 
       </div>
     </div>
 
     <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/snake.js"></script>
+    <script src="js/tetris.js"></script>
+    <script>
+      $(".game1-button").click(function() {
+        $("#tetris").addClass("invisible");
+        $("#snake").removeClass("invisible");
+        startSnake();
+        resetTetris();
+      });
+      $(".game2-button").click(function() {
+        $("#snake").addClass("invisible");
+        $("#tetris").removeClass("invisible");
+        resetSnake();
+        new_game();
+      });
+    </script>
     <script>
       $(document).ready(function () {
        function logofade(){
@@ -38,6 +73,51 @@
            x = setTimeout(function(){logofade()}, 500);
        }
        logofade();
+      });
+    </script>
+    <script>
+      $(document).keydown(function( event ) {
+        if ( event.which == 38 || event.which == 75 || event.which == 87 ) {
+            $(".button-top").addClass("pressed");
+        }
+      });
+      $(document).keyup(function( event ) {
+        if ( event.which == 38 || event.which == 75 || event.which == 87 ) {
+            $(".button-top").removeClass("pressed");
+        }
+      });
+
+      $(document).keydown(function( event ) {
+        if ( event.which == 40 || event.which == 74 || event.which == 83 ) {
+            $(".button-bottom").addClass("pressed");
+        }
+      });
+      $(document).keyup(function( event ) {
+        if ( event.which == 40 || event.which == 74 || event.which == 83 ) {
+            $(".button-bottom").removeClass("pressed");
+        }
+      });
+
+      $(document).keydown(function( event ) {
+        if ( event.which == 37 || event.which == 65 || event.which == 72 ) {
+            $(".button-left").addClass("pressed");
+        }
+      });
+      $(document).keyup(function( event ) {
+        if ( event.which == 37 || event.which == 65 || event.which == 72 ) {
+            $(".button-left").removeClass("pressed");
+        }
+      });
+
+      $(document).keydown(function( event ) {
+        if ( event.which == 39 || event.which == 68 || event.which == 76 ) {
+            $(".button-right").addClass("pressed");
+        }
+      });
+      $(document).keyup(function( event ) {
+        if ( event.which == 39 || event.which == 68 || event.which == 76 ) {
+            $(".button-right").removeClass("pressed");
+        }
       });
     </script>
   </body>
