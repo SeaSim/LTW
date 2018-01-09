@@ -88,8 +88,9 @@ body {
 .coin {
   display: inline-block;
   width: 17%;
-  height: 94px;
+  height: 73%;
   background-image: url('../images/coin.png');
+  background-repeat: repeat-x;
   background-size: 50%;
   margin-top: 15px;
   -webkit-clip-path: polygon(59% 20%, 43% 100%, 91% 100%, 100% 20%);
