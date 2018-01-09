@@ -1,3 +1,9 @@
+/*
+  La pagina principale è stata divisa in 4 sezioni principali, ed ogni sezione è stata delimitata
+  usando la funzione polygon che permette di generare elementi svg all'interno della pagina html,
+  usati per creare l'effetto tridimensionale.
+*/
+
 @font-face {
     font-family: 'tr2n';
     src: url('../fonts/Tr2n.ttf');
@@ -101,6 +107,7 @@ body {
   height: 50px;
   font-size: 20px;
   text-shadow: 0 1px 0 brown;
+  opacity: 0.7;
 }
 
 .button-left {

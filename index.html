@@ -1,3 +1,7 @@
+<!--
+  Oltre agli script per il gioco, sono state usate due librerie js: jquery (usata anche all'interno
+  degli script del gioco) e sweetalert2 (per stilizzare il popup che chiede il nome del giocatore)
+-->
 <html>
   <head>
     <link rel="stylesheet" href="./css/style.css" />
@@ -46,7 +50,14 @@
 
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/sweetalert2.js"></script>
-    <script src="js/snake.js"></script>
+    <script>
+      var canvas = document.getElementById("snake");
+      var context = canvas.getContext("2d");
+    </script>
+    <script src="js/game/gioco.js"></script>
+    <script src="js/game/snake.js"></script>
+    <script src="js/game/cibo.js"></script>
+    <script src="js/game/helpers.js"></script>
     <script>
       $(document).ready(function () {
         swal({
@@ -79,6 +90,11 @@
        logofade();
       });
     </script>
+    <!--
+      I seguenti script servono per captare la pressione ed il rilascio dei vari tasti,
+      ed aggiungono e rimuovono la classe 'pressed' responsabile dell'effetto premuto
+      dei tasti della console.
+    -->
     <script>
       $(document).keydown(function( event ) {
         if ( event.which == 38 || event.which == 75 || event.which == 87 ) {
